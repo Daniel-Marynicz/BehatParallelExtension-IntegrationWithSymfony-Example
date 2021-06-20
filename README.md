@@ -26,11 +26,11 @@ In  [tests/Behat/Context](tests/Behat/Context) you can find Behat Contexts
 
 ### [DatabaseContext.php](tests/Behat/Context/DatabaseContext.php) 
 
-This context on each scenario creates new empty database. 
+This context on each scenario creates new empty test database. 
 
 ### [ProductContext.php](tests/Behat/Context/ProductContext.php)
 
-This context is for creating [Products](src/Entity/Product.php) in database.
+This context is for creating [Products](src/Entity/Product.php) in test database.
 
 ### [TableContext.php](tests/Behat/Context/TableContext.php)
 
