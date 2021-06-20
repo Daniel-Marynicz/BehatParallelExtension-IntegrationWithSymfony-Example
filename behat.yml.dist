@@ -1,0 +1,34 @@
+default:
+    suites:
+        default:
+            contexts:
+                - Behat\MinkExtension\Context\MinkContext
+                - App\Tests\Behat\Context\DemoContext
+                - App\Tests\Behat\Context\TableContext
+                - App\Tests\Behat\Context\ProductContext
+                - App\Tests\Behat\Context\DatabaseContext
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                symfony:
+                    symfony: ~
+        FriendsOfBehat\SymfonyExtension:
+            bootstrap: tests/bootstrap.php
+
+        DMarynicz\BehatParallelExtension\Extension:
+            environments:
+                - DATABASE_URL: "sqlite:///%%kernel.project_dir%%/var/data_test1.db"
+                  # doc for APP_CACHE_DIR https://symfony.com/doc/current/configuration/override_dir_structure.html#override-the-cache-directory
+                  APP_CACHE_DIR: "var/cache1"
+                  # SYMFONY_DOTENV_VARS does not have symfony's docs but without this tests will ignore env vars like DATABASE_URL, APP_CACHE_DIR and tests will not work
+                  SYMFONY_DOTENV_VARS:
+                - DATABASE_URL: "sqlite:///%%kernel.project_dir%%/var/data_test2.db"
+                  APP_CACHE_DIR: "var/cache2"
+                  SYMFONY_DOTENV_VARS:
+                - DATABASE_URL: "sqlite:///%%kernel.project_dir%%/var/data_test3.db"
+                  APP_CACHE_DIR: "var/cache3"
+                  SYMFONY_DOTENV_VARS:
+                - DATABASE_URL: "sqlite:///%%kernel.project_dir%%/var/data_test4.db"
+                  APP_CACHE_DIR: "var/cache4"
+                  SYMFONY_DOTENV_VARS:
+
