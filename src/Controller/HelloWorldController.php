@@ -9,9 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HelloWorldController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
+    /** @Route("/", name="index", methods={"GET"}) */
     public function index(): Response
     {
         return new Response('Hello World');

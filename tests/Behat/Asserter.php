@@ -10,9 +10,7 @@ use function sprintf;
 
 trait Asserter
 {
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     protected function assert(bool $test, string $message): void
     {
         if ($test === false) {
@@ -20,31 +18,25 @@ trait Asserter
         }
     }
 
-    /**
-     * @param mixed $expected
-     * @param mixed $actual
-     *
-     * @throws Exception
-     */
-    protected function assertEquals($expected, $actual, ?string $message = null): void
+    /** @throws Exception */
+    protected function assertEquals(mixed $expected, mixed $actual, string|null $message = null): void
     {
         $this->assert(
             $expected === $actual,
-            $message ?: sprintf("The element '%s' is not equal to '%s'", $actual, $expected)
+            $message ?: sprintf("The element '%s' is not equal to '%s'", $actual, $expected),
         );
     }
 
     /**
-     * @param string|int $key
-     * @param mixed[]    $array
+     * @param mixed[] $array
      *
      * @throws Exception
      */
-    protected function assertArrayHasKey($key, array $array, ?string $message = null): void
+    protected function assertArrayHasKey(string|int $key, array $array, string|null $message = null): void
     {
         $this->assert(
             isset($array[$key]),
-            $message ?: sprintf("The array has no key '%d'", $key)
+            $message ?: sprintf("The array has no key '%d'", $key),
         );
     }
 }

@@ -17,12 +17,9 @@ use ReflectionProperty;
 
 class ProductContext implements Context
 {
-    private ProductRepository $productRepository;
-
     public function __construct(
-        ProductRepository $productRepository
+        private ProductRepository $productRepository,
     ) {
-        $this->productRepository = $productRepository;
     }
 
     /**
@@ -56,12 +53,8 @@ class ProductContext implements Context
         $this->productRepository->getEntityManager()->flush();
     }
 
-    /**
-     * @param mixed $value
-     *
-     * @throws ReflectionException
-     */
-    private function setProperty(object $object, string $name, $value): void
+    /** @throws ReflectionException */
+    private function setProperty(object $object, string $name, mixed $value): void
     {
         $prop = new ReflectionProperty($object, $name);
         $prop->setAccessible(true);

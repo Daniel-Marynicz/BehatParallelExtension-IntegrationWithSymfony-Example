@@ -11,9 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
 {
-    /**
-     * @param string[] $options
-     */
+    /** @param string[] $options */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

@@ -7,9 +7,7 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=ProductRepository::class)
- */
+/** @ORM\Entity(repositoryClass=ProductRepository::class) */
 class Product
 {
     /**
@@ -25,12 +23,12 @@ class Product
     /** @ORM\Column(type="float") */
     private float $price;
 
-    public function getId(): ?int
+    public function getId(): int|null
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string|null
     {
         return $this->name;
     }
@@ -42,7 +40,7 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): float|null
     {
         return $this->price;
     }

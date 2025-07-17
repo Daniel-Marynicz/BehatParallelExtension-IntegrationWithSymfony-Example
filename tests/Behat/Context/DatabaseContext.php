@@ -23,12 +23,12 @@ class DatabaseContext implements Context
     private array $classMetadatas;
 
     public function __construct(
-        ManagerRegistry $managerRegistry
+        ManagerRegistry $managerRegistry,
     ) {
         $entityManager = $managerRegistry->getManager();
         if (! $entityManager instanceof EntityManagerInterface) {
             throw new RuntimeException(
-                'Object manager is not instance of class EntityManager. Please check your configuration.'
+                'Object manager is not instance of class EntityManager. Please check your configuration.',
             );
         }
 
@@ -47,9 +47,7 @@ class DatabaseContext implements Context
         $this->schemaTool->createSchema($this->classMetadatas);
     }
 
-    /**
-     * @AfterScenario
-     */
+    /** @AfterScenario */
     public function dropDatabase(): void
     {
         $this->schemaTool->dropDatabase();

@@ -2,11 +2,18 @@
 
 declare(strict_types=1);
 
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
+use Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle;
+use FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle;
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\MonologBundle\MonologBundle;
+use Symfony\Bundle\TwigBundle\TwigBundle;
+
 return [
-    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
-    FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true],
-    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
-    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
-    Symfony\Bundle\TwigBundle\TwigBundle::class => ['all' => true],
-    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
+    FrameworkBundle::class => ['all' => true],
+    FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true],
+    DoctrineBundle::class => ['all' => true],
+    DoctrineMigrationsBundle::class => ['all' => true],
+    TwigBundle::class => ['all' => true],
+    MonologBundle::class => ['all' => true],
 ];
