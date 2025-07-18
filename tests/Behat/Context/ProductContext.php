@@ -8,10 +8,10 @@ use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
+use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\Id\AssignedGenerator;
-use Doctrine\ORM\Mapping\ClassMetadataInfo;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use ReflectionException;
 use ReflectionProperty;
 
@@ -65,7 +65,7 @@ class ProductContext implements Context
     {
         $metadata                = $this->productRepository->getEntityManager()->getClassMetadata($className);
         $metadata->idGenerator   = new AssignedGenerator();
-        $metadata->generatorType = ClassMetadataInfo::GENERATOR_TYPE_NONE;
+        $metadata->generatorType = ClassMetadata::GENERATOR_TYPE_NONE;
         $this
             ->productRepository
             ->getEntityManager()
